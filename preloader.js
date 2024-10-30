@@ -2,6 +2,7 @@ const overlay = document.createElement('div');
 overlay.id = 'loader';
 overlay.style.cssText = `
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -13,19 +14,28 @@ overlay.style.cssText = `
     z-index: 999;
 `;
 
+// Criando o contêiner do Lottie
 const lottieContainer = document.createElement('div');
 lottieContainer.id = 'lottieContainer';
 lottieContainer.style.cssText = `
     max-width: 100%;
     max-height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 `;
 
+// Criando o texto de carregamento
+const loadingText = document.createElement('p');
+loadingText.innerText = 'Carregando, aguarde...';
+loadingText.style.cssText = `
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 20px;
+`;
+
+// Adicionando o Lottie e o texto ao overlay
+overlay.appendChild(lottieContainer);
+overlay.appendChild(loadingText);
+
 document.body.appendChild(overlay);
-document.body.appendChild(lottieContainer);
 
 function hideOverlay() {
     overlay.style.display = 'none';
